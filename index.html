@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Distribución - LinkUp Pro</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+        .table-container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+            max-width: 1200px;
+            width: 100%;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        th {
+            background-color: #2c3e50;
+            color: #ffffff;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tr:nth-child(even) {
+            background-color: #f9fbfc;
+        }
+        td {
+            font-size: 0.95em;
+            line-height: 1.5;
+            vertical-align: top;
+        }
+        .responsable {
+            font-weight: 600;
+            color: #2980b9;
+            font-size: 1.1em;
+            white-space: nowrap;
+        }
+        .difficulty {
+            font-weight: bold;
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: #e74c3c;
+            color: white;
+            font-size: 0.85em;
+        }
+        .subtitle {
+            display: block;
+            margin-top: 5px;
+            color: #7f8c8d;
+            font-weight: 500;
+        }
+        ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        li:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Responsable</th>
+                <th>Módulos Asignados</th>
+                <th>Nivel de Dificultad General</th>
+                <th>Justificación del Balance de Esfuerzo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="responsable">🧑‍💻 Aliandy</td>
+                <td>
+                    <ul>
+                        <li>Login, registro y recuperación (160 pts)</li>
+                        <li>Mi perfil (80 pts)</li>
+                        <li>Solicitudes de amistad (180 pts)</li>
+                        <li>Funcionalidades generales (50 pts)</li>
+                    </ul>
+                </td>
+                <td>
+                    <span class="difficulty">Alta</span>
+                    <span class="subtitle">(Estado y Seguridad)</span>
+                </td>
+                <td>Su carga se centra en la gestión de Identidad. El esfuerzo principal recae en implementar lógica estricta de seguridad (bloqueos, tokens de email, sesiones de 7 días) y la compleja máquina de estados relacional de las solicitudes de amistad (prevenir duplicados, estados cruzados).</td>
+            </tr>
+            <tr>
+                <td class="responsable">👩‍💻 Yailyn</td>
+                <td>
+                    <ul>
+                        <li>Publicaciones - Home (190 pts)</li>
+                        <li>Amigos (120 pts)</li>
+                        <li>Notificaciones de interacción (70 pts)</li>
+                        <li>Reglas técnicas y arquitectura (140 pts)</li>
+                    </ul>
+                </td>
+                <td>
+                    <span class="difficulty">Alta</span>
+                    <span class="subtitle">(Arquitectura y Datos)</span>
+                </td>
+                <td>Maneja el núcleo social del proyecto. Su esfuerzo se equilibra al ser la responsable inicial de establecer la Arquitectura Onion, EF Core y Repositorios que usará el equipo. Además, debe lidiar con lógica compleja de carga de archivos, previsualizaciones de YouTube y recursividad de datos (hilos de comentarios).</td>
+            </tr>
+            <tr>
+                <td class="responsable">👨‍💻 Waldin</td>
+                <td>
+                    <ul>
+                        <li>Battleship completo (260 pts)</li>
+                        <li>Seguridad funcional (130 pts)</li>
+                    </ul>
+                </td>
+                <td>
+                    <span class="difficulty">Alta</span>
+                    <span class="subtitle">(Algorítmica pura)</span>
+                </td>
+                <td>Aunque numéricamente posee menos módulos, desarrolla el componente más difícil a nivel algorítmico y matemático. Validar matrices 12x12, superposición de barcos, límites y motores de turnos requiere un esfuerzo lógico inmenso. Además, asume el rol de auditar la seguridad transversal (CSRF, XSS) en el código de sus compañeros.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
