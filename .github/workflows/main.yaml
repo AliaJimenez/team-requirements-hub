@@ -8,4 +8,4 @@ jobs:
       - name: Install Surge
         run: npm install -g surge
       - name: Deploy
-        run: surge ./ --project ./ --domain divisionrequerimientosLinkUpPro --login ${{ secrets.SURGE_LOGIN }} --token ${{ secrets.SURGE_TOKEN }}
+        run: surge ./ --project ./ --domain divisionrequerimientosLinkUpPro.surge.sh --login ${{ secrets.SURGE_LOGIN }} --token ${{ secrets.SURGE_TOKEN }}
