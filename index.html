@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabla de Distribución Completa - LinkUp Pro</title>
+    <title>Tabla de Distribución Completa - RealEstateApp</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -77,6 +77,16 @@
             font-weight: 500;
             font-size: 0.85em;
         }
+        .peso {
+            display: inline-block;
+            margin-top: 6px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            background-color: #ecf0f1;
+            color: #2c3e50;
+            font-size: 0.75em;
+            font-weight: 600;
+        }
         ul, ol {
             margin: 0;
             padding-left: 20px;
@@ -86,6 +96,9 @@
         }
         li:last-child {
             margin-bottom: 0;
+        }
+        h1 {
+            text-align: center;
         }
     </style>
 </head>
@@ -104,99 +117,131 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td class="responsable">🧑‍💻 Aliandy</td>
-                <td>
-                    <ul>
-                        <li>Login, registro y recuperación (160 pts)</li>
-                        <li>Mi perfil (80 pts)</li>
-                        <li>Solicitudes de amistad (180 pts)</li>
-                        <li>Funcionalidades generales (50 pts)</li>
-                    </ul>
-                </td>
-                <td>
-                    <span class="difficulty">Alta</span>
-                    <span class="subtitle">(Estado y Seguridad)</span>
-                </td>
-                <td>Su carga se centra en la gestión de Identidad. El esfuerzo principal recae en implementar lógica estricta de seguridad (bloqueos, tokens de email, sesiones de 7 días) y la compleja máquina de estados relacional de las solicitudes de amistad (prevenir duplicados, estados cruzados).</td>
-                <td>
-                    <ul>
-                        <li>Implementar <strong>ASP.NET Core Identity</strong> cumpliendo criterios de fortaleza de contraseña exactos.</li>
-                        <li>Garantizar envío asíncrono de correos (SMTP) y generación de tokens de un solo uso.</li>
-                        <li>Desarrollar lógica de bloqueo temporal de cuentas (5 intentos por 15 min).</li>
-                        <li>Implementar máquina de estados de solicitudes de amistad (En espera, Aceptada, Rechazada, Cancelada) previniendo duplicidad.</li>
-                        <li>Asegurar expiración exacta de sesiones (30 mins regular / 7 días persistente).</li>
-                    </ul>
-                </td>
-                <td>
-                    <ol>
-                        <li><strong>ASP.NET Core Identity:</strong> <code>PasswordOptions</code>, <code>LockoutOptions</code> y tokens de confirmación.</li>
-                        <li><strong>Envío de Emails:</strong> Bibliotecas como MailKit/SendGrid y tareas asíncronas para SMTP.</li>
-                        <li><strong>Máquinas de Estado:</strong> Patrones lógicos para manejar transiciones seguras de estados.</li>
-                    </ol>
-                </td>
-            </tr>
+            <!-- YAILYN - API COMPLETA -->
             <tr>
                 <td class="responsable">👩‍💻 Yailyn</td>
                 <td>
                     <ul>
-                        <li>Publicaciones - Home (190 pts)</li>
-                        <li>Amigos (120 pts)</li>
-                        <li>Notificaciones de interacción (70 pts)</li>
-                        <li>Reglas técnicas y arquitectura (140 pts)</li>
+                        <li>Login y Seguridad API (AccountController, JWT, Seed)</li>
+                        <li>Controlador de Propiedades</li>
+                        <li>Controlador de Agentes (incl. ChangeStatus)</li>
+                        <li>Controlador de Tipo de Propiedades</li>
+                        <li>Controlador de Tipo de Ventas</li>
+                        <li>Controlador de Mejoras</li>
+                        <li>Arquitectura API (Onion, DTOs, AutoMapper, Swagger)</li>
                     </ul>
                 </td>
                 <td>
                     <span class="difficulty">Alta</span>
-                    <span class="subtitle">(Arquitectura y Datos)</span>
+                    <span class="subtitle">(Seguridad JWT y Arquitectura API)</span>
+                    <span class="peso">Peso: 17 pts</span>
                 </td>
-                <td>Maneja el núcleo social del proyecto. Su esfuerzo se equilibra al ser la responsable inicial de establecer la Arquitectura Onion, EF Core y Repositorios que usará el equipo. Además, debe lidiar con lógica compleja de carga de archivos, previsualizaciones de YouTube y recursividad de datos (hilos de comentarios).</td>
+                <td>Se queda con toda la Web API tal como solicitó. Aunque tiene el menor número de módulos (7), concentra la mayor densidad de complejidad: seguridad JWT desde cero, autorización por rol en cada endpoint, manejo uniforme de códigos HTTP (200/201/204/400/401/403/404/500) en 5 controladores distintos, y toda la arquitectura de la capa API. Se compensa el bloque único y denso con menos módulos adicionales fuera de él.</td>
                 <td>
                     <ul>
-                        <li>Configurar esqueleto en <strong>Arquitectura Onion</strong> separando capas (Domain, Application, Persistence, Presentation).</li>
-                        <li>Implementar carga segura de imágenes (formato y tamaño &lt; 5MB) en <code>wwwroot</code> y extraer ID de videos de YouTube.</li>
-                        <li>Desarrollar algoritmos para el Feed de publicaciones ordenado y con filtros complejos.</li>
-                        <li>Crear modelo jerárquico eficiente para hilos de comentarios y respuestas anidadas en BD sin afectar el rendimiento.</li>
-                        <li>Listar y calcular amigos en común de manera dinámica utilizando LINQ.</li>
+                        <li>Implementar <strong>AccountController</strong> con Login público, registro de Desarrollador y Administrador restringido por rol.</li>
+                        <li>Generar y validar <strong>tokens JWT</strong> (usuario, roles, expiración) con esquema Bearer.</li>
+                        <li>Devolver 401 (credenciales inválidas / usuario inactivo) y 403 (rol sin permiso) de forma consistente en los 5 controladores.</li>
+                        <li>Construir CRUD completo con DTOs y AutoMapper para Propiedades, Agentes, Tipo de Propiedad, Tipo de Venta y Mejoras.</li>
+                        <li>Manejar 204 No Content en listados vacíos y 404 Not Found en Get/Update/Delete inexistentes.</li>
+                        <li>Documentar todo con <strong>Swagger</strong>, incluyendo prueba de endpoints protegidos con JWT.</li>
                     </ul>
                 </td>
                 <td>
                     <ol>
-                        <li><strong>Patrones de Arquitectura:</strong> Arquitectura Cebolla, Repository Pattern e Inyección de Dependencias.</li>
-                        <li><strong>EF Core Avanzado:</strong> Eager Loading (<code>Include</code>, <code>ThenInclude</code>) para relaciones anidadas y evitar N+1 queries.</li>
-                        <li><strong>Manejo de I/O en .NET:</strong> <code>IFormFile</code>, validación de bytes de archivos.</li>
-                        <li><strong>AutoMapper:</strong> Proyecciones complejas entre Entidades del Dominio y DTOs/ViewModels.</li>
+                        <li><strong>JWT en ASP.NET Core:</strong> <code>AddAuthentication</code>, <code>AddJwtBearer</code>, generación de tokens con <code>Claims</code> y roles.</li>
+                        <li><strong>ASP.NET Identity + Roles:</strong> Seed de roles (Administrador, Desarrollador) y usuarios por defecto activos.</li>
+                        <li><strong>DTOs y AutoMapper:</strong> Mapeo entre entidades y modelos de respuesta sin exponer datos sensibles.</li>
+                        <li><strong>Swagger / Swashbuckle:</strong> Configuración de esquema Bearer para probar endpoints protegidos.</li>
+                        <li><strong>Manejo de códigos HTTP:</strong> Uso correcto de <code>ActionResult</code>, <code>NoContent()</code>, <code>NotFound()</code>, <code>Forbid()</code>.</li>
                     </ol>
                 </td>
             </tr>
+
+            <!-- ALIANDY - PÚBLICO Y CLIENTE -->
+            <tr>
+                <td class="responsable">🧑‍💻 Aliandy</td>
+                <td>
+                    <ul>
+                        <li>Home público (listado, búsqueda por código, filtros, detalle)</li>
+                        <li>Agentes públicos (listado, búsqueda, propiedades por agente)</li>
+                        <li>Únete a la app (registro, validaciones, correo de activación)</li>
+                        <li>Iniciar sesión (Login)</li>
+                        <li>Home del cliente (favoritos)</li>
+                        <li>Detalle de propiedad del cliente (chat + ofertas)</li>
+                        <li>Seguridad funcional WebApp (Identity, roles, Seed, acceso denegado)</li>
+                        <li>Mantenimiento de Mejoras</li>
+                    </ul>
+                </td>
+                <td>
+                    <span class="difficulty">Alta</span>
+                    <span class="subtitle">(Flujo público y lógica del cliente)</span>
+                    <span class="peso">Peso: 19 pts</span>
+                </td>
+                <td>Incluye los módulos más críticos de cara al usuario final: el flujo de registro con envío de correo de activación, el motor de filtros combinados del Home público, y sobre todo el módulo de ofertas del cliente (validaciones de estado Pendiente/Aceptada/Vendida) que es lógica de negocio sensible. Se compensa el peso con un módulo de baja complejidad (Mejoras) para no sobrecargar el total frente a sus compañeros.</td>
+                <td>
+                    <ul>
+                        <li>Construir el listado público de propiedades ordenado por fecha, con búsqueda por código y filtros combinables (tipo, precio, habitaciones, baños).</li>
+                        <li>Implementar el registro público con validación de correo/usuario único, carga de foto y envío de correo de activación al cliente.</li>
+                        <li>Diferenciar el flujo de activación: cliente vía correo, agente vía activación manual del administrador.</li>
+                        <li>Desarrollar el Login con redirección por rol y bloqueo de usuarios inactivos o con rol no autorizado.</li>
+                        <li>Implementar marcar/desmarcar favoritos sin duplicados y la pantalla "Mis propiedades".</li>
+                        <li>Construir el chat cliente-agente y el módulo de ofertas (bloqueo si hay oferta pendiente/aceptada/propiedad vendida).</li>
+                        <li>Configurar ASP.NET Identity, filtros <code>[Authorize]</code> por rol y la pantalla de acceso denegado.</li>
+                    </ul>
+                </td>
+                <td>
+                    <ol>
+                        <li><strong>ASP.NET Core Identity:</strong> roles, <code>SignInManager</code>, <code>UserManager</code>, filtros <code>[Authorize(Roles = "...")]</code>.</li>
+                        <li><strong>Envío de correos:</strong> servicio SMTP (MailKit) para el correo de activación de clientes.</li>
+                        <li><strong>ViewModels + Data Annotations:</strong> validaciones de formularios (registro, login, filtros, ofertas).</li>
+                        <li><strong>Carga de archivos:</strong> <code>IFormFile</code> para foto de usuario, validación de formato y tamaño.</li>
+                        <li><strong>LINQ avanzado:</strong> filtros combinados y consultas con múltiples condiciones opcionales.</li>
+                    </ol>
+                </td>
+            </tr>
+
+            <!-- WALDIN - AGENTE Y ADMINISTRADOR -->
             <tr>
                 <td class="responsable">👨‍💻 Waldin</td>
                 <td>
                     <ul>
-                        <li>Battleship completo (260 pts)</li>
-                        <li>Seguridad funcional (130 pts)</li>
+                        <li>Home del agente</li>
+                        <li>Detalle de propiedad del agente (chat + aceptar/rechazar ofertas)</li>
+                        <li>Mantenimiento de propiedades del agente (CRUD, código único, imágenes)</li>
+                        <li>Mi perfil del agente</li>
+                        <li>Home del administrador (indicadores)</li>
+                        <li>Listado de agentes (activar/inactivar/eliminar en cascada)</li>
+                        <li>Mantenimiento de administradores</li>
+                        <li>Mantenimiento de desarrolladores</li>
+                        <li>Mantenimiento de tipo de propiedades</li>
+                        <li>Mantenimiento de tipo de ventas</li>
+                        <li>Arquitectura técnica base WebApp (Onion, EF Core, repositorios genéricos)</li>
                     </ul>
                 </td>
                 <td>
                     <span class="difficulty">Alta</span>
-                    <span class="subtitle">(Algorítmica pura)</span>
+                    <span class="subtitle">(Transacciones y cascadas)</span>
+                    <span class="peso">Peso: 21 pts</span>
                 </td>
-                <td>Aunque numéricamente posee menos módulos, desarrolla el componente más difícil a nivel algorítmico y matemático. Validar matrices 12x12, superposición de barcos, límites y motores de turnos requiere un esfuerzo lógico inmenso. Además, asume el rol de auditar la seguridad transversal (CSRF, XSS) en el código de sus compañeros.</td>
+                <td>Tiene el mayor número de módulos (11), pero casi la mitad son mantenimientos tipo catálogo de baja complejidad (tipo de propiedad, tipo de venta, desarrolladores). El peso alto real viene de la lógica de aceptación de ofertas (dispara cascada de rechazo automático de las demás ofertas pendientes + cambio de estado a Vendida) y de la eliminación en cascada de agentes/administradores, que son las piezas más delicadas del lado agente/admin.</td>
                 <td>
                     <ul>
-                        <li>Diseñar el motor del juego Battleship en el backend validando que los barcos no se salgan ni superpongan en la matriz 12x12.</li>
-                        <li>Crear un controlador de turnos invulnerable que evite ataques dobles, fuera de turno o en celdas repetidas.</li>
-                        <li>Diseñar la interfaz de usuario de tableros con CSS Grid coloreando dinámicamente aciertos y fallos.</li>
-                        <li>Auditar la <strong>Seguridad Funcional</strong> del equipo asegurando atributos <code>[ValidateAntiForgeryToken]</code> y <code>[Authorize]</code>.</li>
-                        <li>Impedir vulnerabilidades XSS sanitizando todo input de texto al renderizar en Razor Views.</li>
+                        <li>Implementar la acción "Aceptar oferta": marcar oferta como Aceptada, rechazar automáticamente las demás, y cambiar la propiedad a Vendida en una sola transacción.</li>
+                        <li>Construir el Mantenimiento de propiedades del agente con generación automática de código único de 6 dígitos y carga de 1 a 4 imágenes.</li>
+                        <li>Bloquear edición/eliminación de propiedades ya vendidas.</li>
+                        <li>Implementar eliminación en cascada de un agente (propiedades, imágenes, ofertas, chats, favoritos relacionados).</li>
+                        <li>Aplicar reglas especiales en Mantenimiento de administradores: no permitir auto-edición ni auto-inactivación, y mantener al menos un administrador activo.</li>
+                        <li>Configurar la Arquitectura Onion base del proyecto WebApp (Domain, Application, Infrastructure, Presentation) y repositorios/servicios genéricos que usará el resto del equipo.</li>
                     </ul>
                 </td>
                 <td>
                     <ol>
-                        <li><strong>Algoritmia de Matrices Bidimensionales (2D):</strong> Matemáticas para recorrer y validar colisiones en arrays de C# (Ej. <code>int[,] tablero = new int[12, 12];</code>).</li>
-                        <li><strong>CSS Grid:</strong> Esencial para construir tableros 100% precisos y cuadriculados en el frontend.</li>
-                        <li><strong>Vulnerabilidades (OWASP Top 10):</strong> Prevención estricta de CSRF y uso de <code>HtmlEncoder</code> nativo.</li>
-                        <li><strong>Gestión de Estado Concurrente:</strong> Almacenamiento eficiente de partidas vivas sin saturar la Base de Datos.</li>
+                        <li><strong>Transacciones en EF Core:</strong> <code>DbContext.Database.BeginTransaction()</code> para operaciones multi-entidad atómicas (aceptar oferta).</li>
+                        <li><strong>Eliminación en cascada:</strong> configuración de <code>OnDelete(DeleteBehavior.Cascade)</code> y borrado manual de relaciones dependientes.</li>
+                        <li><strong>Arquitectura Onion / Repository Pattern:</strong> separación de capas e inyección de dependencias con repositorios y servicios genéricos.</li>
+                        <li><strong>Generación de códigos únicos:</strong> lógica de generación aleatoria con validación de unicidad en base de datos.</li>
+                        <li><strong>Carga múltiple de imágenes:</strong> <code>List&lt;IFormFile&gt;</code>, validación de cantidad (1-4) y formato.</li>
                     </ol>
                 </td>
             </tr>
