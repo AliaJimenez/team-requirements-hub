@@ -36,4 +36,4 @@ El proyecto cuenta con un flujo de integración y despliegue continuo (CI/CD) au
 ### Cómo ejecutar localmente:
 1. Clona el repositorio en tu máquina local:
    ```bash
-   git clone https://github.com/AliaJimenez/team-requirements-hub
+   git clone https://github.com/AliaJimenez/team-requirements-hub 
