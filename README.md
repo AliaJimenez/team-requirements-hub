@@ -10,16 +10,16 @@ El proyecto cuenta con un flujo de integración y despliegue continuo (CI/CD) au
 
 ## 💡 Problemas que Resuelve
 
-*   **Dispersión de información:** Evita el uso de múltiples versiones de PDFs de requerimientos al unificar todo en una única fuente de verdad[cite: 5].
-*   **Accesibilidad multiplataforma:** Permite la consulta rápida de asignaciones y responsabilidades desde dispositivos móviles o computadoras de forma instantánea[cite: 5].
-*   **Sincronización de responsabilidades:** Facilita la división de tareas y asegura que cada integrante del equipo conozca sus responsabilidades en tiempo real[cite: 5].
+*   **Dispersión de información:** Evita el uso de múltiples versiones de PDFs de requerimientos al unificar todo en una única fuente de verdad.
+*   **Accesibilidad multiplataforma:** Permite la consulta rápida de asignaciones y responsabilidades desde dispositivos móviles o computadoras de forma instantánea.
+*   **Sincronización de responsabilidades:** Facilita la división de tareas y asegura que cada integrante del equipo conozca sus responsabilidades en tiempo real.
 
 ---
 
 ## 🛠️ Tecnologías y Herramientas
 
-*   **Frontend:** HTML5, CSS3 / Frameworks de diseño (según implementación de tu `index.html`)[cite: 5].
-*   **CI/CD / Automatización:** GitHub Actions (`.github/workflows/main.yaml`) para automatizar el despliegue continuo cada vez que se actualizan los requerimientos[cite: 5].
+*   **Frontend:** HTML5, CSS3 / Frameworks de diseño (según implementación de tu `index.html`).
+*   **CI/CD / Automatización:** GitHub Actions (`.github/workflows/main.yaml`) para automatizar el despliegue continuo cada vez que se actualizan los requerimientos.
 *   **Despliegues:** Configurado para servirse estáticamente (GitHub Pages u homólogos).
 
 ---
@@ -27,7 +27,7 @@ El proyecto cuenta con un flujo de integración y despliegue continuo (CI/CD) au
 ## 📁 Estructura del Repositorio
 
 *   **`index.html`**: El portal principal donde se visualizan y estructuran de forma responsiva los requerimientos de desarrollo del equipo[cite: 5].
-*   **`.github/workflows/main.yaml`**: Pipeline de GitHub Actions encargado de compilar, verificar o desplegar la web automáticamente ante cambios en la rama principal[cite: 5].
+*   **`.github/workflows/main.yaml`**: Pipeline de GitHub Actions encargado de compilar, verificar o desplegar la web automáticamente ante cambios en la rama principal.
 
 ---
 
